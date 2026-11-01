@@ -1,0 +1,20 @@
+name: 'Code Review Framework Audit Gate'
+description: 'Automated CI/CD quality gate verifying pull requests against Code Review Framework (CRF) checkpoints.'
+author: 'wabdelgilil'
+inputs:
+  tier:
+    description: 'Assurance tier to enforce: 1 (Hygiene), 2 (Enterprise), 3 (Mission-Critical)'
+    required: false
+    default: '1'
+  fail-on-violation:
+    description: 'Whether to fail the CI step if blocking issues are found'
+    required: false
+    default: 'true'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+
+branding:
+  icon: 'shield'
+  color: 'blue'

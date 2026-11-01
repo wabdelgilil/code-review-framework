@@ -1,6 +1,11 @@
 # 🏛️ Code Review Framework (CRF)
 
 <p align="center">
+  <a href="./README.md"><b>English</b></a> •
+  <a href="./README.ar.md">العربية</a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT" />
   <img src="https://img.shields.io/badge/Checkpoints-89%20Atomic%20Cards-brightgreen.svg" alt="Checkpoints" />
   <img src="https://img.shields.io/badge/Pillars-6%20Core%20Pillars-orange.svg" alt="Pillars" />
@@ -52,7 +57,9 @@ In addition to the 89 atomic checkpoint cards, this framework provides turnkey o
 | 💬 **Conventional Reviews** | Standardized review comment taxonomy (`issue`, `suggestion`, `praise`) bound to Checkpoint IDs | [View Guide](./CONVENTIONAL_REVIEWS.md) |
 | 📊 **Audit Scorecard** | Full 89-point interactive evaluation matrix with evidence-based scoring and letter grades (A+ to F) | [View Scorecard](./AUDIT_SCORECARD.md) |
 | 📋 **PR Template** | Drop-in `.github/pull_request_template.md` aligning team pull requests with the 6 Quality Pillars | [View Template](./PR_TEMPLATE.md) |
+| 🎖️ **Official Badges** | Official certification and audit grade shields for adoption in your repo README | [View Badges](./BADGES.md) |
 | 🤖 **AI Agent Integration** | Ready-to-use Agent Skill and System Prompt rules for Cursor, Claude, Antigravity, and Copilot | [View Integration](./integrations/ai_agents/) |
+| 💥 **Case Studies Library** | Real-world software disasters (Knight Capital, Cloudflare, Patriot) mapped to violated checkpoints | [View Case Studies](./case_studies/) |
 | 🗺️ **Volunteer Roadmap** | Open tracks for multi-language examples, linter plugins, and translations | [View Roadmap](./ROADMAP.md) |
 | 🌲 **Framework File Map** | Complete physical hierarchical tree map of all 180+ framework files | [View File Map](./brainstorming.md) |
 
