@@ -1,0 +1,19 @@
+{
+  "name": "@wabdelgilil/code-review-framework-mcp",
+  "version": "1.1.0",
+  "description": "Model Context Protocol (MCP) server for the Code Review Framework (CRF)",
+  "main": "index.js",
+  "bin": {
+    "crf-mcp": "./index.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "code-review",
+    "quality-assurance",
+    "ai-agents",
+    "vibe-coding"
+  ],
+  "author": "wabdelgilil",
+  "license": "MIT"
+}

@@ -1,0 +1,18 @@
+{
+  "name": "@wabdelgilil/crf",
+  "version": "1.1.0",
+  "description": "Command Line Interface (CLI) for the Code Review Framework (CRF)",
+  "main": "index.js",
+  "bin": {
+    "crf": "./index.js"
+  },
+  "keywords": [
+    "code-review",
+    "cli",
+    "quality-assurance",
+    "software-engineering",
+    "audit"
+  ],
+  "author": "wabdelgilil",
+  "license": "MIT"
+}

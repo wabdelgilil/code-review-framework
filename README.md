@@ -46,6 +46,63 @@
 
 ---
 
+## 💻 Tooling & Installation Guide
+
+The Code Review Framework provides zero-dependency automated tooling to run audits locally, enforce quality in CI/CD, or empower your AI coding assistants:
+
+### 1. Command-Line Interface (CRF CLI) ⌨️
+Run static quality audits directly from your terminal:
+
+```bash
+# Run static audit gate against your repository
+node path/to/code-review-framework/tools/cli/index.js audit .
+
+# View complete specification & code examples for any checkpoint
+node path/to/code-review-framework/tools/cli/index.js check CHK-RES-0501
+node path/to/code-review-framework/tools/cli/index.js check CHK-DOM-0201
+```
+
+---
+
+### 2. Model Context Protocol (MCP) Server 🤖
+Connect the framework directly to your AI IDE (**Cursor, Claude Desktop, Antigravity, Windsurf**) so your AI assistant natively understands all 89 checkpoints:
+
+Add this to your editor's MCP config file (e.g. `~/.cursor/mcp.json` or `claude_desktop_config.json`):
+```json
+{
+  "mcpServers": {
+    "code-review-framework": {
+      "command": "node",
+      "args": ["path/to/code-review-framework/tools/mcp_server/index.js"]
+    }
+  }
+}
+```
+* **Tools exposed to AI:** `list_checkpoints`, `get_checkpoint`, `search_checkpoints`, `audit_code_snippet`, and `calculate_grade`.
+
+---
+
+### 3. Automated CI/CD GitHub Action 🛡️
+Enforce quality gates automatically on pull requests by adding `.github/workflows/crf-gate.yml` to your repository:
+
+```yaml
+name: 🛡️ Code Review Framework Gate
+on: [push, pull_request]
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run CRF Audit Gate
+        uses: wabdelgilil/code-review-framework/tools/github_action@main
+        with:
+          tier: '1'
+          fail-on-violation: 'true'
+```
+
+---
+
 ## 🛠️ Operational Suite & Review Toolkit
 
 In addition to the 89 atomic checkpoint cards, this framework provides turnkey operational tools to integrate quality directly into daily software engineering workflows:
