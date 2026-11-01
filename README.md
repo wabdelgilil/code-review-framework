@@ -79,6 +79,7 @@ Add this to your editor's MCP config file (e.g. `~/.cursor/mcp.json` or `claude_
 }
 ```
 * **Tools exposed to AI:** `list_checkpoints`, `get_checkpoint`, `search_checkpoints`, `audit_code_snippet`, and `calculate_grade`.
+* 👉 **[View the step-by-step MCP Setup Guide for Cursor, Claude Desktop & Windsurf](./tools/mcp_server/README.md)**.
 
 ---
 

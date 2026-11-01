@@ -1,5 +1,10 @@
 # 🤖 Code Review Framework (CRF) - MCP Server
 
+<p align="center">
+  <a href="./README.md"><b>English</b></a> •
+  <a href="./README.ar.md">العربية</a>
+</p>
+
 Official **Model Context Protocol (MCP)** server for the Code Review Framework.
 
 Allows your AI assistant (Cursor, Claude Desktop, Antigravity, Windsurf) to query the 89 software quality checkpoints, audit code snippets, search standards, and compute compliance scorecard grades natively.

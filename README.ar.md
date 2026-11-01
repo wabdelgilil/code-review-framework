@@ -77,6 +77,7 @@ node path/to/code-review-framework/tools/cli/index.js check CHK-RES-0501
 }
 ```
 * **الأدوات المتاحة للذكاء الاصطناعي بعد الإضافة:** `get_checkpoint` (جلب تفاصيل الفحص)، `search_checkpoints` (البحث الذكي في المعايير)، `audit_code_snippet` (تحليل ومراجعة أجزاء الكود)، `calculate_grade` (حساب درجات التقييم).
+* 👉 **[انقر هنا لفتح الدليل التفصيلي المصور لتثبيت الـ MCP في Cursor و Claude Desktop و Windsurf خطوة بخطوة](./tools/mcp_server/README.ar.md)**.
 
 ---
 
