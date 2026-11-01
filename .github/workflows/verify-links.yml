@@ -1,0 +1,27 @@
+name: 🔍 Documentation & Link Verification
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  verify:
+    name: Verify Markdown Links & Structure
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Markdown Link Checker
+        run: npm install -g markdown-link-check
+
+      - name: Check Broken Internal Markdown Links
+        run: |
+          find . -name \*.md -not -path "./node_modules/*" -exec markdown-link-check -q -c .markdown-link-check.json {} + || true

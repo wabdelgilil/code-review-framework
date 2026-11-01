@@ -1,0 +1,21 @@
+# OS metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editors & IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Temporary artifacts and caches
+*.tmp
+*.log
+.cache/
+node_modules/
+
+# Local audit scratchpad files
+scratchpad/
+local_notes/
