@@ -48,6 +48,68 @@
 
 ---
 
+## 🚀 One-Click Ready-to-Use AI Prompts
+
+Copy and paste these prompts directly into your AI assistant (**Cursor, Claude Desktop, Antigravity, Windsurf, Copilot**) for instant execution:
+
+### 🛠️ Prompt 1: Autonomous Repository Setup
+Instructs your AI to configure `.cursorrules`, register the MCP server, and set up CI/CD actions automatically:
+
+```text
+You are a Principal Software Architect. I want you to configure my current repository to strictly adhere to the Code Review Framework (CRF) from: https://github.com/wabdelgilil/code-review-framework
+
+Execute the following setup tasks in my repository now:
+1. Create a `.cursorrules` (or update system instructions) enforcing: zero dead code, zero swallowed errors in empty catch blocks, mandatory timeouts on all I/O, parameterized queries, and epsilon float comparisons.
+2. Create `.github/PULL_REQUEST_TEMPLATE.md` requiring authors to verify compliance against the 6 Quality Pillars before merging.
+3. Create `.github/workflows/crf-gate.yml` invoking the automated CI gate: wabdelgilil/code-review-framework/tools/github_action@main
+4. If MCP is supported, register the CRF MCP server using: node D:/programming/code-review-framework/tools/mcp_server/index.js
+
+Confirm once complete and summarize the newly active guardrails in my workspace.
+```
+
+---
+
+### 🔍 Prompt 2: Deep Pull Request & Code Review
+Instructs your AI to review any diff or code against all 89 checkpoints with conventional blocking/non-blocking feedback:
+
+```text
+Review the latest git diff (or provided code) with radical objectivity against the 89 Code Review Framework (CRF) checkpoints:
+- Architecture: Check for framework leakage and dead code (CHK-ARCH-0205).
+- Domain Logic: Check for float precision (CHK-DOM-0201) and zero-division guards (CHK-DOM-0203).
+- Resilience: Check for swallowed exceptions (CHK-RES-0102) and finite I/O timeouts (CHK-RES-0301).
+- Security: Check for injection risks (CHK-RES-0501) and hardcoded secrets (CHK-RES-0502).
+- Performance: Check for N+1 queries and O(N^2) iterations (CHK-PERF-0101).
+
+Format findings strictly using Conventional Comments:
+<issue (blocking) | suggestion (non-blocking) | praise> [CHK-CODE]: <summary>
+[Operational Impact & Why]
+[Canonical Remediated Code Example]
+
+If no blocking issues are detected, explicitly confirm that the diff is 100% ready for merge.
+```
+
+---
+
+### 🛡️ Prompt 3: Production-Grade Vibe Coding Guardrail
+Paste at the start of an AI session to ensure newly generated code is production-grade from line one:
+
+```text
+You are an elite software engineer adhering strictly to the Code Review Framework (CRF).
+When generating code, you MUST follow these non-negotiable rules:
+1. NEVER swallow exceptions silently; every catch block must handle or rethrow with context.
+2. ALWAYS enforce strict finite timeouts on all network, database, and process operations.
+3. ALWAYS use parameterized queries or safe builders; zero string concatenation for SQL/shell.
+4. NEVER compare floats directly with (==); use epsilon tolerance math.
+5. Functions must be short, cohesive, and have a single responsibility with zero dead code.
+
+Now, implement the following feature following these standards:
+[Insert your feature description here]
+```
+
+*(For release gating and audit scorecard prompts, visit the [Full Prompts Catalog](./QUICK_START_PROMPTS.md))*.
+
+---
+
 ## 💻 Tooling & Installation Guide
 
 The Code Review Framework provides zero-dependency automated tooling to run audits locally, enforce quality in CI/CD, or empower your AI coding assistants:
