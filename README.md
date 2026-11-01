@@ -43,6 +43,8 @@
    Copy [`.github/PULL_REQUEST_TEMPLATE.md`](./.github/PULL_REQUEST_TEMPLATE.md) into your repository's `.github/` folder.
 5. **For AI Coding Assistants & Agents:**
    Equip your AI assistant (Antigravity, Cursor, Claude Code, Copilot) with our [Agent Skill](./integrations/ai_agents/SKILL.md) and [System Prompt Guardrails](./integrations/ai_agents/SYSTEM_PROMPT.md) so it writes and reviews code against this framework automatically!
+6. **🚀 One-Click Ready-to-Use Prompts:**
+   Don't want manual setup? Open our **[AI Quick-Start Prompts Guide](./QUICK_START_PROMPTS.md)**, copy the one-click setup prompt, and paste it directly into Cursor/Claude to configure your repo automatically!
 
 ---
 
@@ -117,6 +119,7 @@ In addition to the 89 atomic checkpoint cards, this framework provides turnkey o
 | 📋 **PR Template** | Drop-in `.github/pull_request_template.md` aligning team pull requests with the 6 Quality Pillars | [View Template](./PR_TEMPLATE.md) |
 | 🎖️ **Official Badges** | Official certification and audit grade shields for adoption in your repo README | [View Badges](./BADGES.md) |
 | 🤖 **AI Agent Integration** | Ready-to-use Agent Skill and System Prompt rules for Cursor, Claude, Antigravity, and Copilot | [View Integration](./integrations/ai_agents/) |
+| 🚀 **Quick-Start Prompts** | One-click ready prompts to instruct AI to auto-install and audit your codebase | [View Prompts](./QUICK_START_PROMPTS.md) |
 | 💥 **Case Studies Library** | Real-world software disasters (Knight Capital, Cloudflare, Patriot) mapped to violated checkpoints | [View Case Studies](./case_studies/) |
 | 🗺️ **Volunteer Roadmap** | Open tracks for multi-language examples, linter plugins, and translations | [View Roadmap](./ROADMAP.md) |
 | 🌲 **Framework File Map** | Complete physical hierarchical tree map of all 180+ framework files | [View File Map](./brainstorming.md) |
