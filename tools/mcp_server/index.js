@@ -13,7 +13,7 @@ const path = require('path');
 
 const REPO_ROOT = path.resolve(__dirname, '../../');
 
-// Static index of all 115 checkpoints with metadata
+// Static index of all 136+ checkpoints with metadata
 const CHECKPOINTS_META = [
   // Pillar 1
   { id: 'CHK-ARCH-0101', name: 'Zero Framework Leakage', pillar: '01', tier: 1 },
@@ -148,7 +148,36 @@ const CHECKPOINTS_META = [
   { id: 'CHK-API-0202', name: 'Centralized Technical Debt Register', pillar: '09', tier: 2 },
   { id: 'CHK-API-0301', name: 'Pre-Implementation Entity Impact Analysis', pillar: '09', tier: 2 },
   { id: 'CHK-API-0302', name: 'Feature Specifications & Living SRS', pillar: '09', tier: 2 },
-  { id: 'CHK-API-0303', name: 'Triple-Tier Governance & Pristine Root Policy', pillar: '09', tier: 2 }
+  { id: 'CHK-API-0303', name: 'Triple-Tier Governance & Pristine Root Policy', pillar: '09', tier: 2 },
+
+  // Pillar 10: AI/LLM Systems & Agent Safety
+  { id: 'CHK-AI-0101', name: 'Prompt Injection & Boundary Isolation', pillar: '10', tier: 1 },
+  { id: 'CHK-AI-0102', name: 'Structured Output Schema Validation', pillar: '10', tier: 1 },
+  { id: 'CHK-AI-0103', name: 'PII Scrubbing Before LLM Egress', pillar: '10', tier: 1 },
+  { id: 'CHK-AI-0201', name: 'Token/Cost Caps & Model Fallbacks', pillar: '10', tier: 2 },
+  { id: 'CHK-AI-0202', name: 'Human-in-the-Loop for Destructive Tools', pillar: '10', tier: 1 },
+  { id: 'CHK-AI-0203', name: 'Automated Golden Eval Regression Gates', pillar: '10', tier: 2 },
+
+  // Pillar 11: Cloud-Native, Containers & IaC
+  { id: 'CHK-INFRA-0101', name: 'Non-Root Minimal Containers & Image Scanning', pillar: '11', tier: 1 },
+  { id: 'CHK-INFRA-0102', name: 'Secret Vaults & OIDC Workload Identity', pillar: '11', tier: 1 },
+  { id: 'CHK-INFRA-0201', name: 'Declarative IaC & Automated Drift Detection', pillar: '11', tier: 2 },
+  { id: 'CHK-INFRA-0202', name: 'Network Segmentation & Zero-Trust mTLS', pillar: '11', tier: 2 },
+  { id: 'CHK-INFRA-0203', name: 'FinOps Tagging & Auto-Scaling Caps', pillar: '11', tier: 2 },
+
+  // Pillar 12: Mobile, Offline-First & Sync Engineering
+  { id: 'CHK-MOB-0101', name: 'Encrypted Local Storage & Hardware Keychain', pillar: '12', tier: 1 },
+  { id: 'CHK-MOB-0102', name: 'Deep Link Validation & Minimum Version Gating', pillar: '12', tier: 2 },
+  { id: 'CHK-MOB-0201', name: 'Durable Offline Mutation Queues', pillar: '12', tier: 1 },
+  { id: 'CHK-MOB-0202', name: 'Deterministic Sync Conflict Resolution', pillar: '12', tier: 2 },
+  { id: 'CHK-MOB-0203', name: 'Battery & Network-Aware Adaptive Sync', pillar: '12', tier: 2 },
+
+  // Pillar 13: Event-Driven Architecture & Distributed Systems
+  { id: 'CHK-EVENT-0101', name: 'Transactional Outbox Pattern', pillar: '13', tier: 2 },
+  { id: 'CHK-EVENT-0102', name: 'Dead-Letter Queues & Poison-Pill Isolation', pillar: '13', tier: 1 },
+  { id: 'CHK-EVENT-0103', name: 'Consumer Idempotency Under At-Least-Once Delivery', pillar: '13', tier: 1 },
+  { id: 'CHK-EVENT-0201', name: 'Event Schema Registry & Backward Compatibility', pillar: '13', tier: 2 },
+  { id: 'CHK-EVENT-0202', name: 'Distributed Trace Context Propagation (traceparent)', pillar: '13', tier: 2 }
 ];
 
 function findCheckpointFile(id) {
@@ -184,7 +213,7 @@ const TOOLS = [
       properties: {
         pillar: {
           type: 'string',
-          description: 'Filter by pillar: 01 (Architecture), 02 (Domain), 03 (Testing), 04 (Resilience), 05 (Performance), 06 (Operations), 07 (Data & Multi-Tenancy), 08 (Frontend & UX), 09 (API Governance & Delivery)'
+          description: 'Filter by pillar: 01 (Architecture), 02 (Domain), 03 (Testing), 04 (Resilience), 05 (Performance), 06 (Operations), 07 (Data & Multi-Tenancy), 08 (Frontend & UX), 09 (API Governance), 10 (AI/LLM Safety), 11 (Cloud/IaC), 12 (Mobile/Offline), 13 (Event-Driven)'
         },
         tier: {
           type: 'number',
@@ -241,7 +270,7 @@ const TOOLS = [
   },
   {
     name: 'calculate_grade',
-    description: 'Calculate overall compliance percentage and letter grade (A+, A, B, C, F) based on pass/fail counts from the 115-point audit scorecard.',
+    description: 'Calculate overall compliance percentage and letter grade (A+, A, B, C, F) based on pass/fail counts from the 136-point audit scorecard.',
     inputSchema: {
       type: 'object',
       properties: {

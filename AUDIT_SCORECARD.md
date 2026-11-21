@@ -1,4 +1,4 @@
-# 📊 Engineering Audit Scorecard (115-Point Quality Matrix)
+# 📊 Engineering Audit Scorecard (136-Point Quality Matrix)
 
 > **Navigation Breadcrumb:** [🏠 Root (Level 0)](./README.md) > **Audit Scorecard**
 > **Grounding:** Inspired by **Mercari Production Readiness Checklist**, **OWASP ASVS Verification Matrix**, and **Google Production Standards**.
@@ -21,7 +21,25 @@ This interactive scorecard provides an objective, evidence-based quality audit f
 
 ## 📈 Compliance Calculation & Grading System
 
-$$\text{Compliance Score (\%)} = \left( \frac{\text{PASS Count}}{\text{Total Checkpoints (115)} - \text{N/A Count}} \right) \times 100\%$$
+$$\text{Compliance Score (\%)} = \left( \frac{\text{PASS Count}}{\text{Total Checkpoints (136)} - \text{N/A Count}} \right) \times 100\%$$
+
+---
+
+## 🧭 Pillar Applicability Matrix (Scope Selection by Project Profile)
+
+> [!TIP]
+> **Not every project applies all 13 pillars.**
+> * **Pillars `01–06` (Universal Core):** Mandatory for **every** software project (libraries, CLIs, backends, web apps, mobile apps, AI systems).
+> * **Pillars `07–13` (Specialized / Conditional):** Activate only the pillars matching your system architecture. Mark non-applicable pillars as **`N/A`** with a brief rationale—`N/A` checkpoints are subtracted from the denominator and **never penalize your compliance score**.
+
+| Project Profile | `01–06` Core | `07` Data/Multi-Tenant | `08` Frontend/UX | `09` API/Release | `10` AI/LLM | `11` Cloud/IaC | `12` Mobile/Offline | `13` Event-Driven |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **CLI Tool / Pure Library** | Required | N/A | N/A | Optional | N/A | N/A | N/A | N/A |
+| **Backend REST/GraphQL API** | Required | Required | N/A | Required | Optional | Required | N/A | Optional |
+| **Enterprise Full-Stack SaaS** | Required | Required | Required | Required | Optional | Required | Optional | Optional |
+| **Mobile / Field-Ops App** | Required | Optional | Required | Required | Optional | Optional | Required | Optional |
+| **AI / LLM Agent Platform** | Required | Required | Optional | Required | Required | Required | N/A | Optional |
+| **Event-Driven Microservices** | Required | Required | N/A | Required | Optional | Required | N/A | Required |
 
 | Grade | Compliance Range | Minimum Tier Requirements | Release Status |
 | :---: | :---: | :--- | :---: |
@@ -33,7 +51,7 @@ $$\text{Compliance Score (\%)} = \left( \frac{\text{PASS Count}}{\text{Total Che
 
 ---
 
-## 📋 Comprehensive 115-Checkpoint Verification Table
+## 📋 Comprehensive 136-Checkpoint Verification Table
 
 ### 🏛️ Pillar 1: Architecture & Code Quality (19 Checkpoints)
 
@@ -210,6 +228,55 @@ $$\text{Compliance Score (\%)} = \left( \frac{\text{PASS Count}}{\text{Total Che
 | `CHK-API-0301` | Pre-Implementation Impact Analysis | L2 | `[ ] PASS` | Initiative plan cross-layer impact matrix audit | |
 | `CHK-API-0302` | Feature Specs & Living `SRS.md` | L2 | `[ ] PASS` | `docs/features/` coverage + PR zero-drift check | |
 | `CHK-API-0303` | Triple-Tier Governance & Clean Root | L2 | `[ ] PASS` | Root directory hygiene + active-only plan check | |
+
+---
+
+### 🤖 Pillar 10: AI/LLM Systems & Agent Safety (6 Checkpoints — Conditional)
+
+| ID | Checkpoint Name | Tier | Status | Verification Method / Command | Evidence / Artifact Notes |
+| :--- | :--- | :---: | :---: | :--- | :--- |
+| `CHK-AI-0101` | Prompt Injection & Boundary Isolation | L1 | `[ ] PASS` | Role separation audit + indirect injection test | |
+| `CHK-AI-0102` | Structured Output Schema Validation | L1 | `[ ] PASS` | Zod/Pydantic parse + malformed output unit test | |
+| `CHK-AI-0103` | PII Scrubbing Before LLM Egress | L1 | `[ ] PASS` | Prompt redaction test + zero-retention config | |
+| `CHK-AI-0201` | Token/Cost Caps & Model Fallbacks | L2 | `[ ] PASS` | `maxSteps`/`maxTokens` audit + 503 failover test | |
+| `CHK-AI-0202` | Human-in-the-Loop Destructive Tools | L1 | `[ ] PASS` | Risk-tier registry + unapproved tool bypass test | |
+| `CHK-AI-0203` | Automated Golden Eval Regression | L2 | `[ ] PASS` | CI golden eval suite score & schema validity | |
+
+---
+
+### ☁️ Pillar 11: Cloud-Native, Containers & IaC (5 Checkpoints — Conditional)
+
+| ID | Checkpoint Name | Tier | Status | Verification Method / Command | Evidence / Artifact Notes |
+| :--- | :--- | :---: | :---: | :--- | :--- |
+| `CHK-INFRA-0101` | Non-Root Minimal Containers & Scans | L1 | `[ ] PASS` | `hadolint` + `trivy image --severity CRITICAL` | |
+| `CHK-INFRA-0102` | Secret Vaults & OIDC Identity | L1 | `[ ] PASS` | CI OIDC federation audit (0 static cloud keys) | |
+| `CHK-INFRA-0201` | Declarative IaC & Drift Detection | L2 | `[ ] PASS` | `terraform plan -detailed-exitcode` (0 drift) | |
+| `CHK-INFRA-0202` | Network Segmentation & Zero-Trust | L2 | `[ ] PASS` | `checkov`/`tfsec` scan (0 public DBs / `0.0.0.0/0`) | |
+| `CHK-INFRA-0203` | FinOps Tagging & Auto-Scaling Caps | L2 | `[ ] PASS` | IaC tag enforcement + explicit `maxReplicas` cap | |
+
+---
+
+### 📱 Pillar 12: Mobile, Offline-First & Sync Engineering (5 Checkpoints — Conditional)
+
+| ID | Checkpoint Name | Tier | Status | Verification Method / Command | Evidence / Artifact Notes |
+| :--- | :--- | :---: | :---: | :--- | :--- |
+| `CHK-MOB-0101` | Encrypted Local Storage & Keychain | L1 | `[ ] PASS` | Audit for plaintext token prefs + logout wipe | |
+| `CHK-MOB-0102` | Deep Link & Min-Version Gating | L2 | `[ ] PASS` | Deep-link fuzz test + HTTP `426` upgrade screen | |
+| `CHK-MOB-0201` | Durable Offline Mutation Queues | L1 | `[ ] PASS` | Airplane-mode force-kill + reconnect sync test | |
+| `CHK-MOB-0202` | Deterministic Conflict Resolution | L2 | `[ ] PASS` | Concurrent edit version mismatch (`409`) test | |
+| `CHK-MOB-0203` | Battery & Network Adaptive Sync | L2 | `[ ] PASS` | Delta cursor pull + OS constrained scheduler | |
+
+---
+
+### 📨 Pillar 13: Event-Driven & Distributed Systems (5 Checkpoints — Conditional)
+
+| ID | Checkpoint Name | Tier | Status | Verification Method / Command | Evidence / Artifact Notes |
+| :--- | :--- | :---: | :---: | :--- | :--- |
+| `CHK-EVENT-0101` | Transactional Outbox Pattern | L2 | `[ ] PASS` | Broker-down commit test + outbox relay verify | |
+| `CHK-EVENT-0102` | Dead-Letter Queues & Poison Pills | L1 | `[ ] PASS` | Malformed message injection -> DLQ + alert | |
+| `CHK-EVENT-0103` | Consumer Idempotency (At-Least-Once) | L1 | `[ ] PASS` | Duplicate event delivery test (0 extra effects) | |
+| `CHK-EVENT-0201` | Event Schema Registry Compatibility | L2 | `[ ] PASS` | CI schema diff (`buf breaking` / registry check) | |
+| `CHK-EVENT-0202` | Distributed Trace (`traceparent`) | L2 | `[ ] PASS` | End-to-end HTTP -> Queue -> Worker trace check | |
 
 ---
 

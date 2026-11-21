@@ -1,7 +1,7 @@
 <!-- 
 Thank you for your contribution! 
 Before submitting this PR, please review PRE_SUBMISSION_CHECKLIST.md.
-Make sure your diff is focused, passes all automated tests, and adheres to the 6 Quality Pillars.
+Make sure your diff is focused, passes all automated tests, and adheres to the Universal Core Pillars (01–06) plus any applicable Conditional Pillars (07–13).
 -->
 
 ## 🎯 Summary & Context
@@ -63,6 +63,15 @@ Make sure your diff is focused, passes all automated tests, and adheres to the 6
 ### Pillar 6: Documentation & Operations
 - [ ] **API Documentation**: Public functions, types, and error conditions are documented. (`CHK-UX-0201`)
 - [ ] **Actionable Errors & Logs**: Error messages describe what failed, why, and how to recover. No PII logged. (`CHK-UX-0301`, `0303`)
+
+### Conditional Pillars (07–13 — Check only if applicable to this PR; otherwise N/A)
+- [ ] **Pillar 07 (Data & Multi-Tenancy)**: Versioned migrations, server-side RBAC/RLS, tenant isolation, atomic transactions, immutable audit diffs. (`CHK-DATA-0102`, `0104`, `0201`, `0202`, `0301`)
+- [ ] **Pillar 08 (Frontend & UX)**: Design tokens, Loading/Error/Empty states + Error Boundaries, i18n/RTL logical properties, WCAG 2.1 AA. (`CHK-FE-0101`, `0102`, `0301`, `0302`)
+- [ ] **Pillar 09 (API & Delivery)**: Standardized JSON envelopes, versioning, `Idempotency-Key`, rate limiting, living `SRS.md`/feature specs. (`CHK-API-0101`, `0103`, `0104`, `0302`)
+- [ ] **Pillar 10 (AI/LLM Safety)**: Prompt boundary isolation, Zod/Pydantic output validation, PII egress scrubbing, token caps, HITL destructive gates. (`CHK-AI-0101`, `0102`, `0103`, `0202`)
+- [ ] **Pillar 11 (Cloud & IaC)**: Non-root minimal containers, OIDC identity (zero static keys), IaC with zero drift, private data stores, scaling caps. (`CHK-INFRA-0101`, `0102`, `0201`, `0202`)
+- [ ] **Pillar 12 (Mobile & Offline)**: Hardware Keychain/Keystore storage, durable offline mutation queues, optimistic conflict handling. (`CHK-MOB-0101`, `0201`, `0202`)
+- [ ] **Pillar 13 (Event-Driven)**: Transactional Outbox, Dead-Letter Queues (DLQ), idempotent consumers, W3C `traceparent` propagation. (`CHK-EVENT-0101`, `0102`, `0103`, `0202`)
 
 ---
 
