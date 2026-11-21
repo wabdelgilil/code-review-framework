@@ -7,8 +7,8 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT" />
-  <img src="https://img.shields.io/badge/Checkpoints-89%20Atomic%20Cards-brightgreen.svg" alt="Checkpoints" />
-  <img src="https://img.shields.io/badge/Pillars-6%20Core%20Pillars-orange.svg" alt="Pillars" />
+  <img src="https://img.shields.io/badge/Checkpoints-115%20Atomic%20Cards-brightgreen.svg" alt="Checkpoints" />
+  <img src="https://img.shields.io/badge/Pillars-9%20Core%20Pillars-orange.svg" alt="Pillars" />
   <img src="https://img.shields.io/badge/Standards-ISO%2025010%20%7C%20OWASP%20ASVS-purple.svg" alt="Standards" />
   <img src="https://img.shields.io/badge/AI--Born-Vibe%20Coding%20Elevated-9cf.svg" alt="AI-Born" />
   <img src="https://img.shields.io/badge/PRs-Welcome-green.svg" alt="PRs Welcome" />
@@ -38,7 +38,7 @@
 2. **For Code Reviewers (Objective Feedback):**
    Use [Conventional Reviews](./CONVENTIONAL_REVIEWS.md) to tag review comments with structured tags (`issue (blocking)`, `suggestion (non-blocking)`) bound directly to checkpoint codes (e.g. `[CHK-RES-0501]`).
 3. **For Release Audits & Production Readiness:**
-   Conduct release gating using the [89-Point Audit Scorecard](./AUDIT_SCORECARD.md) with our evidence-based calculation formula.
+   Conduct release gating using the [115-Point Audit Scorecard](./AUDIT_SCORECARD.md) with our evidence-based calculation formula.
 4. **For CI/CD PR Enforcement:**
    Copy [`.github/PULL_REQUEST_TEMPLATE.md`](./.github/PULL_REQUEST_TEMPLATE.md) into your repository's `.github/` folder.
 5. **For AI Coding Assistants & Agents:**
@@ -70,10 +70,10 @@ Confirm once complete and summarize the newly active guardrails in my workspace.
 ---
 
 ### 🔍 Prompt 2: Deep Pull Request & Code Review
-Instructs your AI to review any diff or code against all 89 checkpoints with conventional blocking/non-blocking feedback:
+Instructs your AI to review any diff or code against all 115 checkpoints with conventional blocking/non-blocking feedback:
 
 ```text
-Review the latest git diff (or provided code) with radical objectivity against the 89 Code Review Framework (CRF) checkpoints:
+Review the latest git diff (or provided code) with radical objectivity against the 115 Code Review Framework (CRF) checkpoints:
 - Architecture: Check for framework leakage and dead code (CHK-ARCH-0205).
 - Domain Logic: Check for float precision (CHK-DOM-0201) and zero-division guards (CHK-DOM-0203).
 - Resilience: Check for swallowed exceptions (CHK-RES-0102) and finite I/O timeouts (CHK-RES-0301).
@@ -129,7 +129,7 @@ node path/to/code-review-framework/tools/cli/index.js check CHK-DOM-0201
 ---
 
 ### 2. Model Context Protocol (MCP) Server 🤖
-Connect the framework directly to your AI IDE (**Cursor, Claude Desktop, Antigravity, Windsurf**) so your AI assistant natively understands all 89 checkpoints:
+Connect the framework directly to your AI IDE (**Cursor, Claude Desktop, Antigravity, Windsurf**) so your AI assistant natively understands all 115 checkpoints:
 
 Add this to your editor's MCP config file (e.g. `~/.cursor/mcp.json` or `claude_desktop_config.json`):
 ```json
@@ -170,15 +170,15 @@ jobs:
 
 ## 🛠️ Operational Suite & Review Toolkit
 
-In addition to the 89 atomic checkpoint cards, this framework provides turnkey operational tools to integrate quality directly into daily software engineering workflows:
+In addition to the 115 atomic checkpoint cards, this framework provides turnkey operational tools to integrate quality directly into daily software engineering workflows:
 
 | Operational Tool | Description | Direct Link |
 | :--- | :--- | :---: |
 | 🎖️ **Maturity Levels & Tiers** | Three progressive verification tiers (L1: Hygiene, L2: Enterprise, L3: Mission-Critical) | [View Tiers](./MATURITY_LEVELS.md) |
 | 🚀 **Pre-Submission Checklist** | Author's 3-minute pre-flight checklist before opening or flagging a PR for review | [View Checklist](./PRE_SUBMISSION_CHECKLIST.md) |
 | 💬 **Conventional Reviews** | Standardized review comment taxonomy (`issue`, `suggestion`, `praise`) bound to Checkpoint IDs | [View Guide](./CONVENTIONAL_REVIEWS.md) |
-| 📊 **Audit Scorecard** | Full 89-point interactive evaluation matrix with evidence-based scoring and letter grades (A+ to F) | [View Scorecard](./AUDIT_SCORECARD.md) |
-| 📋 **PR Template** | Drop-in `.github/pull_request_template.md` aligning team pull requests with the 6 Quality Pillars | [View Template](./PR_TEMPLATE.md) |
+| 📊 **Audit Scorecard** | Full 115-point interactive evaluation matrix with evidence-based scoring and letter grades (A+ to F) | [View Scorecard](./AUDIT_SCORECARD.md) |
+| 📋 **PR Template** | Drop-in `.github/pull_request_template.md` aligning team pull requests with the 9 Quality Pillars | [View Template](./PR_TEMPLATE.md) |
 | 🎖️ **Official Badges** | Official certification and audit grade shields for adoption in your repo README | [View Badges](./BADGES.md) |
 | 🤖 **AI Agent Integration** | Ready-to-use Agent Skill and System Prompt rules for Cursor, Claude, Antigravity, and Copilot | [View Integration](./integrations/ai_agents/) |
 | 🚀 **Quick-Start Prompts** | One-click ready prompts to instruct AI to auto-install and audit your codebase | [View Prompts](./QUICK_START_PROMPTS.md) |
@@ -234,7 +234,7 @@ Every checklist, inspection, and verification suite within this framework is str
 
 ---
 
-## 🌲 Level 1: Core Trunk Index (The Six Primary Pillars)
+## 🌲 Level 1: Core Trunk Index (The Nine Primary Pillars)
 
 Click on any pillar to access its dedicated index and sub-branches:
 
@@ -246,6 +246,9 @@ Click on any pillar to access its dedicated index and sub-branches:
 | `04` | **[TRK-RES] Resilience, Error Handling & Security** | Exception propagation, fail-fast mechanics, input validation, and audit logging | [📁 View Index](./04_resilience_and_error_handling/README.md) |
 | `05` | **[TRK-PERF] Performance & Resource Efficiency** | Algorithmic complexity, latency benchmarks, memory leak prevention, artifact lifecycle | [📁 View Index](./05_performance_and_resources/README.md) |
 | `06` | **[TRK-UX] Documentation, DX & Operations** | Standard Operating Procedures (SOP), architectural records, actionable user diagnostics | [📁 View Index](./06_documentation_and_operations/README.md) |
+| `07` | **[TRK-DATA] Data Architecture, Multi-Tenancy & Compliance** | Relational symmetry, soft deletes, atomic reconciliation, server RBAC/RLS, immutable audit trails, PDPL/GDPR, DRP | [📁 View Index](./07_data_architecture_and_multitenancy/README.md) |
+| `08` | **[TRK-FE] Frontend, Design System & UX** | Design tokens & primitives, async UI states, server/client state separation, i18n/RTL, WCAG 2.1 AA, Core Web Vitals | [📁 View Index](./08_frontend_design_system_and_ux/README.md) |
+| `09` | **[TRK-API] API Governance, Delivery & Execution** | Standardized envelopes, API versioning, idempotency, rate limiting, feature flags, tech debt, entity impact & living SRS | [📁 View Index](./09_api_governance_and_release_control/README.md) |
 
 ---
 

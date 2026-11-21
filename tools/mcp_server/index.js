@@ -13,7 +13,7 @@ const path = require('path');
 
 const REPO_ROOT = path.resolve(__dirname, '../../');
 
-// Static index of all 89 checkpoints with metadata
+// Static index of all 115 checkpoints with metadata
 const CHECKPOINTS_META = [
   // Pillar 1
   { id: 'CHK-ARCH-0101', name: 'Zero Framework Leakage', pillar: '01', tier: 1 },
@@ -116,7 +116,39 @@ const CHECKPOINTS_META = [
   { id: 'CHK-UX-0403', name: 'OpenTelemetry Metrics & Trace Hooks', pillar: '06', tier: 3 },
   { id: 'CHK-UX-0404', name: 'Codified Operational Runbooks', pillar: '06', tier: 2 },
   { id: 'CHK-UX-0405', name: 'Graceful Shutdown & Signal Handling', pillar: '06', tier: 2 },
-  { id: 'CHK-UX-0406', name: 'Zero-Downtime Migration & Rollback', pillar: '06', tier: 3 }
+  { id: 'CHK-UX-0406', name: 'Zero-Downtime Migration & Rollback', pillar: '06', tier: 3 },
+
+  // Pillar 7: Data Architecture, Multi-Tenancy & Compliance
+  { id: 'CHK-DATA-0101', name: 'Bidirectional Relationship Symmetry', pillar: '07', tier: 2 },
+  { id: 'CHK-DATA-0102', name: 'Referential Integrity & Versioned Migrations', pillar: '07', tier: 1 },
+  { id: 'CHK-DATA-0103', name: 'Soft Delete & Consistent Query Filtering', pillar: '07', tier: 2 },
+  { id: 'CHK-DATA-0104', name: 'Atomic Transactions & Zero-Variance Reconciliation', pillar: '07', tier: 1 },
+  { id: 'CHK-DATA-0201', name: 'Server-Side Authorization & RBAC Authority', pillar: '07', tier: 1 },
+  { id: 'CHK-DATA-0202', name: 'Strict Multi-Tenant Isolation & Database RLS', pillar: '07', tier: 1 },
+  { id: 'CHK-DATA-0301', name: 'Immutable Append-Only Audit Trails', pillar: '07', tier: 2 },
+  { id: 'CHK-DATA-0302', name: 'Data Retention & Privacy Compliance (PDPL/GDPR)', pillar: '07', tier: 2 },
+  { id: 'CHK-DATA-0303', name: 'Backup Verification & DRP Restoration Drills', pillar: '07', tier: 3 },
+
+  // Pillar 8: Frontend, Design System & UX
+  { id: 'CHK-FE-0101', name: 'Unified Design Tokens & UI Primitives', pillar: '08', tier: 2 },
+  { id: 'CHK-FE-0102', name: 'Standardized Async UI States & Error Boundaries', pillar: '08', tier: 1 },
+  { id: 'CHK-FE-0201', name: 'Server vs. Client State Separation', pillar: '08', tier: 2 },
+  { id: 'CHK-FE-0202', name: 'Anti-Monolith Component Decomposition', pillar: '08', tier: 2 },
+  { id: 'CHK-FE-0301', name: 'i18n Hygiene & Native RTL/LTR Parity', pillar: '08', tier: 1 },
+  { id: 'CHK-FE-0302', name: 'WCAG 2.1 AA Accessibility & Responsiveness', pillar: '08', tier: 2 },
+  { id: 'CHK-FE-0303', name: 'Code Splitting & Heavy Module Lazy Loading', pillar: '08', tier: 2 },
+  { id: 'CHK-FE-0304', name: 'List Virtualization & Core Web Vitals Budgets', pillar: '08', tier: 2 },
+
+  // Pillar 9: API Governance, Delivery & Execution
+  { id: 'CHK-API-0101', name: 'Standardized API Envelopes & HTTP Status Codes', pillar: '09', tier: 1 },
+  { id: 'CHK-API-0102', name: 'API Versioning & Deprecation Policy', pillar: '09', tier: 2 },
+  { id: 'CHK-API-0103', name: 'Idempotency Keys for Critical Mutations', pillar: '09', tier: 2 },
+  { id: 'CHK-API-0104', name: 'Endpoint Rate Limiting & Throttling', pillar: '09', tier: 1 },
+  { id: 'CHK-API-0201', name: 'Feature Flags & Runtime Kill Switches', pillar: '09', tier: 2 },
+  { id: 'CHK-API-0202', name: 'Centralized Technical Debt Register', pillar: '09', tier: 2 },
+  { id: 'CHK-API-0301', name: 'Pre-Implementation Entity Impact Analysis', pillar: '09', tier: 2 },
+  { id: 'CHK-API-0302', name: 'Feature Specifications & Living SRS', pillar: '09', tier: 2 },
+  { id: 'CHK-API-0303', name: 'Triple-Tier Governance & Pristine Root Policy', pillar: '09', tier: 2 }
 ];
 
 function findCheckpointFile(id) {
@@ -152,7 +184,7 @@ const TOOLS = [
       properties: {
         pillar: {
           type: 'string',
-          description: 'Filter by pillar: 01 (Architecture), 02 (Domain), 03 (Testing), 04 (Resilience), 05 (Performance), 06 (Operations)'
+          description: 'Filter by pillar: 01 (Architecture), 02 (Domain), 03 (Testing), 04 (Resilience), 05 (Performance), 06 (Operations), 07 (Data & Multi-Tenancy), 08 (Frontend & UX), 09 (API Governance & Delivery)'
         },
         tier: {
           type: 'number',
@@ -209,7 +241,7 @@ const TOOLS = [
   },
   {
     name: 'calculate_grade',
-    description: 'Calculate overall compliance percentage and letter grade (A+, A, B, C, F) based on pass/fail counts from the 89-point audit scorecard.',
+    description: 'Calculate overall compliance percentage and letter grade (A+, A, B, C, F) based on pass/fail counts from the 115-point audit scorecard.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -321,7 +353,7 @@ function handleToolCall(name, args) {
   if (name === 'calculate_grade') {
     const passed = Number(args.passed_count) || 0;
     const na = Number(args.na_count) || 0;
-    const totalApplicable = 89 - na;
+    const totalApplicable = CHECKPOINTS_META.length - na;
     const score = totalApplicable > 0 ? (passed / totalApplicable) * 100 : 0;
     let grade = 'F';
     let verdict = 'REJECTED';

@@ -1,4 +1,4 @@
-# 📊 Engineering Audit Scorecard (89-Point Quality Matrix)
+# 📊 Engineering Audit Scorecard (115-Point Quality Matrix)
 
 > **Navigation Breadcrumb:** [🏠 Root (Level 0)](./README.md) > **Audit Scorecard**
 > **Grounding:** Inspired by **Mercari Production Readiness Checklist**, **OWASP ASVS Verification Matrix**, and **Google Production Standards**.
@@ -21,7 +21,7 @@ This interactive scorecard provides an objective, evidence-based quality audit f
 
 ## 📈 Compliance Calculation & Grading System
 
-$$\text{Compliance Score (\%)} = \left( \frac{\text{PASS Count}}{\text{Total Checkpoints (89)} - \text{N/A Count}} \right) \times 100\%$$
+$$\text{Compliance Score (\%)} = \left( \frac{\text{PASS Count}}{\text{Total Checkpoints (115)} - \text{N/A Count}} \right) \times 100\%$$
 
 | Grade | Compliance Range | Minimum Tier Requirements | Release Status |
 | :---: | :---: | :--- | :---: |
@@ -33,7 +33,7 @@ $$\text{Compliance Score (\%)} = \left( \frac{\text{PASS Count}}{\text{Total Che
 
 ---
 
-## 📋 Comprehensive 89-Checkpoint Verification Table
+## 📋 Comprehensive 115-Checkpoint Verification Table
 
 ### 🏛️ Pillar 1: Architecture & Code Quality (19 Checkpoints)
 
@@ -163,6 +163,53 @@ $$\text{Compliance Score (\%)} = \left( \frac{\text{PASS Count}}{\text{Total Che
 | `CHK-UX-0404` | Runbook for Operational Alerts | L2 | `[ ] PASS` | Link to alert runbook in alert definitions | |
 | `CHK-UX-0405` | Graceful Shutdown on SIGTERM | L2 | `[ ] PASS` | Send SIGTERM; verify in-flight drain | |
 | `CHK-UX-0406` | Zero-Downtime Rollback Ready | L3 | `[ ] PASS` | Backward compatible DB schema verification | |
+
+---
+
+### 🗄️ Pillar 7: Data Architecture, Multi-Tenancy & Compliance (9 Checkpoints)
+
+| ID | Checkpoint Name | Tier | Status | Verification Method / Command | Evidence / Artifact Notes |
+| :--- | :--- | :---: | :---: | :--- | :--- |
+| `CHK-DATA-0101` | Bidirectional Relationship Symmetry | L2 | `[ ] PASS` | Cross-layer DB/ORM/API/UI relation audit | |
+| `CHK-DATA-0102` | Referential Integrity & Migrations | L1 | `[ ] PASS` | Clean migration replay + FK constraint inspect | |
+| `CHK-DATA-0103` | Soft Delete & Query Filtering | L2 | `[ ] PASS` | Soft-delete read/search/KPI exclusion test | |
+| `CHK-DATA-0104` | Atomic Transactions & Zero Variance | L1 | `[ ] PASS` | Rollback + concurrent ledger reconciliation test | |
+| `CHK-DATA-0201` | Server-Side Auth & RBAC Authority | L1 | `[ ] PASS` | Negative 401/403 RBAC & BOLA integration tests | |
+| `CHK-DATA-0202` | Multi-Tenant Isolation & DB RLS | L1 | `[ ] PASS` | Cross-tenant isolation suite + `pg_policies` check | |
+| `CHK-DATA-0301` | Immutable Append-Only Audit Trails | L2 | `[ ] PASS` | `audit_logs` diff check + DB revoke/trigger verify | |
+| `CHK-DATA-0302` | Data Retention & Privacy (PDPL/GDPR) | L2 | `[ ] PASS` | Signed URL expiry + export field minimization | |
+| `CHK-DATA-0303` | Backup Verification & DRP Drills | L3 | `[ ] PASS` | Isolated restore drill log within target RTO | |
+
+---
+
+### 🎨 Pillar 8: Frontend, Design System & UX (8 Checkpoints)
+
+| ID | Checkpoint Name | Tier | Status | Verification Method / Command | Evidence / Artifact Notes |
+| :--- | :--- | :---: | :---: | :--- | :--- |
+| `CHK-FE-0101` | Unified Design Tokens & Primitives | L2 | `[ ] PASS` | Grep for raw hexes + primitive reuse audit | |
+| `CHK-FE-0102` | Async UI States & Error Boundaries | L1 | `[ ] PASS` | Offline/500/empty UI state & boundary tests | |
+| `CHK-FE-0201` | Server vs. Client State Separation | L2 | `[ ] PASS` | Audit for raw `useEffect` + `fetch` waterfalls | |
+| `CHK-FE-0202` | Anti-Monolith Component Sizing | L2 | `[ ] PASS` | File line-count scan ($\le 500$ lines target) | |
+| `CHK-FE-0301` | i18n Hygiene & RTL/LTR Parity | L1 | `[ ] PASS` | Locale key parity diff + logical CSS check | |
+| `CHK-FE-0302` | WCAG 2.1 AA & Responsiveness | L2 | `[ ] PASS` | `axe-core` scan (0 critical/serious) + keyboard | |
+| `CHK-FE-0303` | Code Splitting & Lazy Loading | L2 | `[ ] PASS` | Production bundle analyzer entry chunk audit | |
+| `CHK-FE-0304` | Virtualization & Core Web Vitals | L2 | `[ ] PASS` | Lighthouse CI (LCP/INP/CLS) + 1k-row DOM check | |
+
+---
+
+### 🌐 Pillar 9: API Governance, Delivery & Execution (9 Checkpoints)
+
+| ID | Checkpoint Name | Tier | Status | Verification Method / Command | Evidence / Artifact Notes |
+| :--- | :--- | :---: | :---: | :--- | :--- |
+| `CHK-API-0101` | Standardized API Envelopes & Codes | L1 | `[ ] PASS` | OpenAPI / Zod response & error contract tests | |
+| `CHK-API-0102` | API Versioning & Deprecation | L2 | `[ ] PASS` | `oasdiff breaking` CI check + `Sunset` header | |
+| `CHK-API-0103` | Idempotency Keys for Mutations | L2 | `[ ] PASS` | Duplicate `Idempotency-Key` replay & hash test | |
+| `CHK-API-0104` | Endpoint Rate Limiting & Throttling | L1 | `[ ] PASS` | Burst test verifying HTTP `429` + `Retry-After` | |
+| `CHK-API-0201` | Feature Flags & Kill Switches | L2 | `[ ] PASS` | Staging flag toggle + safe fallback verify | |
+| `CHK-API-0202` | Centralized Tech Debt Register | L2 | `[ ] PASS` | Untracked `TODO`/`FIXME` scan + register check | |
+| `CHK-API-0301` | Pre-Implementation Impact Analysis | L2 | `[ ] PASS` | Initiative plan cross-layer impact matrix audit | |
+| `CHK-API-0302` | Feature Specs & Living `SRS.md` | L2 | `[ ] PASS` | `docs/features/` coverage + PR zero-drift check | |
+| `CHK-API-0303` | Triple-Tier Governance & Clean Root | L2 | `[ ] PASS` | Root directory hygiene + active-only plan check | |
 
 ---
 
