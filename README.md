@@ -15,6 +15,12 @@
   <img src="https://img.shields.io/badge/Domain-100%25%20Agnostic-lightgrey.svg" alt="Domain Agnostic" />
 </p>
 
+<p align="center">
+  <a href="https://glama.ai/mcp/servers/wabdelgilil/code-review-framework">
+    <img src="https://glama.ai/mcp/servers/wabdelgilil/code-review-framework/badges/score.svg" alt="wabdelgilil/code-review-framework MCP server" />
+  </a>
+</p>
+
 > **Level 0 (Root Index):** Master framework for software quality checklists, audit standards, and testing methodologies for any professional software project.
 > **Architectural Principle:** Hierarchical Tree Structure (Folder-in-Folder). Every parent directory serves as a navigable catalog/index for its children, with bidirectional links (breadcrumbs and drill-downs) ensuring zero context drift.
 > **Domain Neutrality:** Fully decoupled and domain-agnostic. Designed to audit and verify any pure software system, service, CLI, or application from scratch.
